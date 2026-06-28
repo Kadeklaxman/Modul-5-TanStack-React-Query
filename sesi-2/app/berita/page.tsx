@@ -11,6 +11,9 @@ export default function BeritaListPage() {
     queryKey: ["berita", "cnn"],
     queryFn: fetchCNNNews,
     staleTime: 5 * 60 * 1000,
+
+      refetchInterval: 5000,
+
   });
 
   const filteredNews =
@@ -82,10 +85,10 @@ export default function BeritaListPage() {
             <h2 className="font-semibold text-gray-900">{item.title}</h2>
             <p className="mt-2 text-sm text-gray-600">{item.description}</p>
             <p className="mt-2 text-xs text-gray-400">
-              {new Date(item.isodate ?? item.pubDate).toLocaleString("id-ID")}
+              {new Date(item.isoDate ?? item.pubDate).toLocaleString("id-ID")}
             </p>
             <Link
-              href={`/berita/${encodeURIComponent(item.link)}`}
+              href={`/berita/${idx}`}
               className="mt-2 inline-block text-sm text-blue-600 hover:underline"
             >
               Baca selengkapnya
